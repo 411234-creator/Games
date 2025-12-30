@@ -1,0 +1,144 @@
+{
+  "name": "DnD TRPG - 冒險之書",
+  "version": "1.0.0",
+  "description": "基於 HTML5 的 D&D 風格 TRPG 遊戲引擎，集成 AI API 支持動態故事生成",
+  "author": "Game Designer",
+  "license": "Personal Use",
+  "repository": {
+    "type": "local",
+    "url": "file:///c:/Users/user/Documents/Games/DnD-TRPG"
+  },
+  "keywords": [
+    "trpg",
+    "dnd",
+    "rpg",
+    "game",
+    "html5",
+    "ai",
+    "adventure",
+    "story"
+  ],
+  "features": {
+    "character_creation": "完整的 D&D 風格角色創建系統",
+    "story_engine": "動態故事生成引擎",
+    "ai_integration": "支持多個 AI 提供商",
+    "dice_system": "完整的擲骰系統",
+    "data_persistence": "本地數據存儲",
+    "offline_mode": "離線遊戲模式"
+  },
+  "supported_races": [
+    "人類 (Human)",
+    "精靈 (Elf)",
+    "矮人 (Dwarf)",
+    "半身人 (Halfling)",
+    "龍裔 (Dragonborn)",
+    "侏儒 (Gnome)",
+    "半獸人 (Half-Orc)",
+    "提夫林 (Tiefling)"
+  ],
+  "supported_classes": [
+    "野蠻人 (Barbarian)",
+    "吟遊詩人 (Bard)",
+    "聖職者 (Cleric)",
+    "德魯伊 (Druid)",
+    "戰士 (Fighter)",
+    "武僧 (Monk)",
+    "聖騎士 (Paladin)",
+    "遊俠 (Ranger)",
+    "盜賊 (Rogue)",
+    "術士 (Sorcerer)",
+    "術士 (Warlock)",
+    "法師 (Wizard)"
+  ],
+  "ai_providers": [
+    "OpenAI ChatGPT",
+    "HuggingFace",
+    "Custom API",
+    "Offline Mode"
+  ],
+  "browser_support": {
+    "chrome": "90+",
+    "firefox": "88+",
+    "safari": "14+",
+    "edge": "90+"
+  },
+  "file_structure": {
+    "index.html": "遊戲主頁面",
+    "css/styles.css": "遊戲樣式表",
+    "js/config.js": "遊戲配置和常量",
+    "js/character.js": "角色系統",
+    "js/api.js": "AI API 集成",
+    "js/game.js": "遊戲邏輯",
+    "js/ui.js": "用戶界面互動",
+    "README.md": "詳細文檔",
+    "QUICKSTART.md": "快速開始指南",
+    "start.bat": "Windows 啟動腳本",
+    "start.sh": "macOS/Linux 啟動腳本"
+  },
+  "installation": {
+    "method1": "直接在瀏覽器打開 index.html",
+    "method2": "使用本地服務器 (推薦)",
+    "method3": "運行啟動腳本 (start.bat 或 start.sh)"
+  },
+  "dependencies": "無外部依賴",
+  "storage": "Browser LocalStorage API",
+  "api_endpoints": {
+    "openai": "https://api.openai.com/v1/chat/completions",
+    "huggingface": "https://api-inference.huggingface.co",
+    "custom": "User defined"
+  },
+  "game_mechanics": {
+    "attribute_system": "6 大屬性 (STR, DEX, CON, INT, WIS, CHA)",
+    "dice_system": "d20 + 修正值",
+    "level_system": "角色等級提升",
+    "health_system": "生命值與傷害計算",
+    "skill_system": "18 種技能檢定",
+    "armor_system": "護甲等級計算"
+  },
+  "changelog": {
+    "1.0.0": {
+      "date": "2025-12-30",
+      "features": [
+        "初始版本發佈",
+        "基本角色創建系統",
+        "AI API 集成",
+        "故事引擎",
+        "擲骰系統",
+        "數據持久化"
+      ]
+    }
+  },
+  "future_features": [
+    "多人遊戲支持",
+    "存檔系統增強",
+    "更多故事場景",
+    "怪物圖鑑",
+    "成就系統",
+    "音效與音樂",
+    "移動應用版本"
+  ],
+  "performance": {
+    "file_size": "< 500KB",
+    "load_time": "< 2 seconds",
+    "browser_storage": "LocalStorage",
+    "auto_save": "Every 30 seconds"
+  },
+  "security": {
+    "cors": "Support required",
+    "api_key": "Client-side storage (use cautiously)",
+    "data_encryption": "Not implemented",
+    "recommendation": "Use API keys with limited permissions"
+  },
+  "development": {
+    "language": "JavaScript (ES6+)",
+    "framework": "Vanilla JS",
+    "styling": "CSS3",
+    "browser_api": "LocalStorage, Fetch API",
+    "editor": "Any text editor"
+  },
+  "credits": {
+    "game_design": "D&D 5th Edition 規則集",
+    "inspiration": "Classic tabletop RPGs",
+    "technology": "Web Standards"
+  }
+}

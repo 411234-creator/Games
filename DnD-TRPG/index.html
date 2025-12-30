@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DnD 風格的 TRPG 角色扮演遊戲">
+    <title>DnD TRPG - 冒險之書</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- 主菜單 -->
+        <div id="mainMenu" class="screen active">
+            <div class="menu-container">
+                <div class="title-section">
+                    <h1 class="game-title">⚔️ DnD TRPG ⚔️</h1>
+                    <p class="game-subtitle">冒險之書 - 開啟你的傳奇故事</p>
+                </div>
+                
+                <div class="menu-buttons">
+                    <button class="btn btn-primary" onclick="showScreen('characterCreation')">
+                        <span class="btn-icon">👤</span>
+                        <span>新建角色</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="showScreen('characterSelect')">
+                        <span class="btn-icon">📖</span>
+                        <span>載入角色</span>
+                    </button>
+                    <button class="btn btn-info" onclick="showScreen('adventure')">
+                        <span class="btn-icon">🗺️</span>
+                        <span>開始冒險</span>
+                    </button>
+                    <button class="btn btn-warning" onclick="showScreen('settings')">
+                        <span class="btn-icon">⚙️</span>
+                        <span>設置</span>
+                    </button>
+                </div>
+
+                <div class="footer-text">
+                    <p>by 遊戲設計師 | 版本 1.0.0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 角色創建屏幕 -->
+        <div id="characterCreation" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('mainMenu')">← 返回</button>
+                <h2>角色創建</h2>
+            </div>
+
+            <div class="screen-content">
+                <div class="two-column-layout">
+                    <!-- 左側：角色基本信息 -->
+                    <div class="left-column">
+                        <div class="form-group">
+                            <label>角色名稱</label>
+                            <input type="text" id="charName" placeholder="輸入你的角色名稱" maxlength="30">
+                        </div>
+
+                        <div class="form-group">
+                            <label>種族</label>
+                            <select id="charRace">
+                                <option value="">選擇種族</option>
+                                <option value="human">人類</option>
+                                <option value="elf">精靈</option>
+                                <option value="dwarf">矮人</option>
+                                <option value="halfling">半身人</option>
+                                <option value="dragonborn">龍裔</option>
+                                <option value="gnome">侏儒</option>
+                                <option value="half-orc">半獸人</option>
+                                <option value="tiefling">提夫林</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>職業</label>
+                            <select id="charClass">
+                                <option value="">選擇職業</option>
+                                <option value="barbarian">野蠻人</option>
+                                <option value="bard">吟遊詩人</option>
+                                <option value="cleric">聖職者</option>
+                                <option value="druid">德魯伊</option>
+                                <option value="fighter">戰士</option>
+                                <option value="monk">武僧</option>
+                                <option value="paladin">聖騎士</option>
+                                <option value="ranger">遊俠</option>
+                                <option value="rogue">盜賊</option>
+                                <option value="sorcerer">術士</option>
+                                <option value="warlock">術士</option>
+                                <option value="wizard">法師</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>背景故事</label>
+                            <textarea id="charBackground" placeholder="描述你的角色背景故事...（可選）" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- 右側：屬性分配 -->
+                    <div class="right-column">
+                        <div class="stats-section">
+                            <h3>屬性點數 (3d6 擲骰)</h3>
+                            <button class="btn btn-primary" onclick="rollStats()">擲骰分配</button>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-box">
+                                    <div class="stat-label">力量 (STR)</div>
+                                    <input type="number" id="stat-str" min="3" max="20" value="10">
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-label">敏捷 (DEX)</div>
+                                    <input type="number" id="stat-dex" min="3" max="20" value="10">
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-label">體質 (CON)</div>
+                                    <input type="number" id="stat-con" min="3" max="20" value="10">
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-label">智力 (INT)</div>
+                                    <input type="number" id="stat-int" min="3" max="20" value="10">
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-label">感知 (WIS)</div>
+                                    <input type="number" id="stat-wis" min="3" max="20" value="10">
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-label">魅力 (CHA)</div>
+                                    <input type="number" id="stat-cha" min="3" max="20" value="10">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-section">
+                            <h3>角色外觀</h3>
+                            <div class="form-group">
+                                <label>性別</label>
+                                <select id="charGender">
+                                    <option value="male">男性</option>
+                                    <option value="female">女性</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>髮色</label>
+                                <input type="text" id="charHairColor" placeholder="例如：黑色、棕色">
+                            </div>
+                            <div class="form-group">
+                                <label>特徵</label>
+                                <input type="text" id="charDistinguishing" placeholder="例如：疤痕、紋身">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-success" onclick="saveCharacter()">保存角色</button>
+                    <button class="btn btn-danger" onclick="showScreen('mainMenu')">取消</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 角色選擇屏幕 -->
+        <div id="characterSelect" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('mainMenu')">← 返回</button>
+                <h2>選擇角色</h2>
+            </div>
+
+            <div class="screen-content">
+                <div id="characterList" class="character-list">
+                    <!-- 動態生成角色列表 -->
+                </div>
+
+                <div id="noCharacters" class="empty-state">
+                    <p>還沒有角色，請先創建一個角色。</p>
+                    <button class="btn btn-primary" onclick="showScreen('characterCreation')">創建角色</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 冒險屏幕 -->
+        <div id="adventure" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('mainMenu')">← 主菜單</button>
+                <h2>冒險進行中</h2>
+                <div id="characterInfo" class="character-info-bar"></div>
+            </div>
+
+            <div class="adventure-container">
+                <!-- 左側：遊戲信息 -->
+                <div class="adventure-main">
+                    <div id="storyContent" class="story-content">
+                        <h3>選擇你的故事</h3>
+                        <p>選擇下面的故事開始你的冒險...</p>
+                    </div>
+
+                    <div id="adventureLog" class="adventure-log">
+                        <h4>冒險日誌</h4>
+                        <div id="logContent"></div>
+                    </div>
+                </div>
+
+                <!-- 右側：玩家操作 -->
+                <div class="adventure-sidebar">
+                    <div class="action-panel">
+                        <h3>你的行動</h3>
+                        <div id="actionButtons" class="action-buttons">
+                            <!-- 動態生成動作按鈕 -->
+                        </div>
+
+                        <div class="custom-action">
+                            <h4>自定義行動</h4>
+                            <textarea id="customAction" placeholder="描述你想做的事情...（API 將生成回應）" rows="4"></textarea>
+                            <button class="btn btn-primary" onclick="submitCustomAction()">提交行動</button>
+                        </div>
+                    </div>
+
+                    <div class="character-sheet">
+                        <h3>角色卡</h3>
+                        <div id="characterSheet"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 設置屏幕 -->
+        <div id="settings" class="screen">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('mainMenu')">← 返回</button>
+                <h2>設置</h2>
+            </div>
+
+            <div class="screen-content">
+                <div class="settings-section">
+                    <h3>API 設置</h3>
+                    <div class="form-group">
+                        <label>API 提供者</label>
+                        <select id="apiProvider">
+                            <option value="openai">OpenAI (ChatGPT)</option>
+                            <option value="huggingface">HuggingFace</option>
+                            <option value="custom">自定義 API</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>API 密鑰</label>
+                        <input type="password" id="apiKey" placeholder="輸入你的 API 密鑰">
+                    </div>
+
+                    <div class="form-group">
+                        <label>API 端點</label>
+                        <input type="text" id="apiEndpoint" placeholder="https://api.openai.com/v1/...">
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>遊戲設置</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="soundEnabled" checked>
+                            啟用音效
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="autoSave" checked>
+                            自動保存
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>數據管理</h3>
+                    <button class="btn btn-warning" onclick="exportGameData()">匯出遊戲數據</button>
+                    <button class="btn btn-danger" onclick="clearAllData()">清除所有數據</button>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-success" onclick="saveSettings()">保存設置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加載指示器 -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="spinner"></div>
+        <p>正在生成回應...</p>
+    </div>
+
+    <!-- 通知系統 -->
+    <div id="notificationCenter" class="notification-center"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
